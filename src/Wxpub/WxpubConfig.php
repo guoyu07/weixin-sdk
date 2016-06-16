@@ -40,4 +40,9 @@ class WxpubConfig
      * 用于消息加密的秘钥
      */
     const ENCODING_AES_KEY = '';
+
+    /**
+     * 设置授权后的重定向url
+     */
+    const OAUTH_REDIREC_URL = '';
 }

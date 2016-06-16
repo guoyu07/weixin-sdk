@@ -8,12 +8,18 @@
 namespace Wxpub\Contracts;
 
 
+use Wxpub\Utils\Curl;
+
 abstract class WeixinApiInterface
 {
     protected $access_token;
 
+    protected $curl;
+
     public function __construct($access_token)
     {
         $this->access_token = $access_token;
+
+        $this->curl = new Curl();
     }
 }

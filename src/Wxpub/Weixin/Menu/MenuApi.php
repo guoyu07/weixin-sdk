@@ -15,13 +15,6 @@ use Wxpub\WxpubUrl;
 
 class MenuApi extends WeixinApiInterface
 {
-    protected $curl;
-    public function __construct($access_token)
-    {
-        parent::__construct($access_token);
-        $this->curl = new Curl();
-    }
-
     /**
      * 创建订单时，需要提供的数组数据结构如下：
      * 详情，参考：https://mp.weixin.qq.com/wiki/10/0234e39a2025342c17a7d23595c6b40a.html#
@@ -62,12 +55,12 @@ class MenuApi extends WeixinApiInterface
 
         $url = WxpubUrl::getCreateMenuUrl($this->access_token);
 
-        header('Content-type: application/json');
-        echo json_encode($data, JSON_UNESCAPED_UNICODE);exit;
-        $ret = $this->curl->post(json_encode($data, JSON_UNESCAPED_UNICODE))->submit($url);
+        $menuData = json_encode($data, JSON_UNESCAPED_UNICODE);
+
+        $ret = $this->curl->post($menuData)->submit($url);
 
         $retArr = json_decode($ret['body'], true);
-        
+
         if ($retArr['errcode'] != WxpubCode::SUCC) {
             return $retArr;
         }
@@ -75,28 +68,32 @@ class MenuApi extends WeixinApiInterface
         return true;
     }
 
-    public function queryMenu()
+    /**
+     * @param string $type
+     *  - query 查询菜单
+     *  - delete 删除菜单
+     *  - config 获取菜单配置
+     *
+     * @return bool|array
+     * @author helei
+     */
+    public function controlMenu($type = 'query')
     {
+        $url = '';
+        if ($type == 'query') {
+            $url = WxpubUrl::getQueryMenuUrl($this->access_token);
+        } elseif ($type == 'delete') {
+            $url = WxpubUrl::getDelMenuUrl($this->access_token);
+        } elseif ($type == 'config') {
+            $url = WxpubUrl::getCurrentSelfMenuInfoUrl($this->access_token);
+        } else {
+            return false;
+        }
 
-    }
+        $ret = $this->curl->get($url);
 
-    public function deleteMenu()
-    {
+        $retArr = json_decode($ret['body'], true);
 
-    }
-
-    public function pushMenu()
-    {
-
-    }
-
-    public function customMenu()
-    {
-
-    }
-
-    public function getMenuConfig()
-    {
-
+        return $retArr;
     }
 }

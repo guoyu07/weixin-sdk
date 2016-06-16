@@ -65,8 +65,10 @@ class Curl
             foreach ($data as $key => $value) {
                 $this->post[$key] = $value;
             }
-        } else {
+        } elseif($value) {
             $this->post[$data] = $value;
+        } else {
+            $this->post = $data;
         }
         return $this;
     }
@@ -162,6 +164,7 @@ class Curl
     /**
      * 出错自动重试
      * @param int $times
+     * @return $this
      */
     public function retry($times = 0)
     {
