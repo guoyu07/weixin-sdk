@@ -37,10 +37,10 @@ class Curl
      */
     public static function init()
     {
-        if (self::$instance === null) {
-            self::$instance = new self;
+        if (static::$instance === null) {
+            static::$instance = new static;
         }
-        return self::$instance;
+        return static::$instance;
     }
 
     /**
