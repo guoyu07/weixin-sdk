@@ -9,48 +9,33 @@ require_once __DIR__ . '/../autoload.php';
 use Wxpub\Weixin\Menu\MenuApi;
 use Wxpub\Weixin\Menu\MenuType;
 
-$access_token = 'CtsvDOzaiPTq1AjH5OZ398sVu7RBJKPaFZAS6XUIprJr4Q_8VDjwQGCBCWXa2ZjevR3yxK9w-MM6xjL7inQgbPnqdrjGgnlPmIc5-Ov0OVcKar4a9nn_zRp3f2mhFqzALNAhAEAGIV';
+$access_token = 'pYBxxM4L1kDxBknlXVzXlepQaPNY0jVC8KPMRgTCrHRYiRi-4qmL0ZIeRw_h1LIVRftHnrhk9i9XyiPFBsLQAcn3zdzc4AUnGoFvoTbsxmUwFDhPzfa3pI8EGzeCMPzNDZUiAIARNI';
 
 $menu = new  MenuApi($access_token);
 
 // 菜单数据
-$menuData = [
-    [
-        'type'  => MenuType::VIEW,
-        'name'  => '预约拍摄',
-        'url'   => 'http://www.pugefei.com/'
-    ],
-    [
-        'name'  => '看看我们',
-        'sub_button'    => [
-            [
-                'type'  => MenuType::VIEW,
-                'name'  => '客服微信',
-                'url'  => 'http://www.baidu.com/'
-            ],
-            [
-                'type'  => MenuType::VIEW,
-                'name'  => '新品发布',
-                'url'  => 'http://www.baidu.com/'
-            ]
-        ]
-    ],
-    [
-        'name'  => '了解我们',
-        'sub_button'    => [
-            [
-                'type'  => MenuType::VIEW,
-                'name'  => '希顿国际广场店',
-                'url'  => 'http://www.baidu.com/'
-            ],
-            [
-                'type'  => MenuType::VIEW,
-                'name'  => '凯德天府店',
-                'url'  => 'http://www.baidu.com/'
-            ]
-        ]
-    ]
-];
+$menuData = array(
+    array(
+        'name'  => '购物平台',
+        'type'  => 'view',
+        'url'   => 'https://wap.koudaitong.com/v2/showcase/feature?alias=mvcxsa9b',
+    ),
+    array(
+        'name'  => '加盟中心',
+        'sub_button'    => array(
+            array(
+                'type'  => 'click',
+                'key'   => 'SELF_QRCODE01',
+                'name'  => '我的推广二维码',
+            ),
+        ),
+    ),
+    array(
+        'name'  => '联系我们',
+        'type'  => 'view',
+        'url'   => 'http://wap.koudaitong.com/v2/showcase/feature?alias=sl8um0vr',
+    ),
+);
 
 
 

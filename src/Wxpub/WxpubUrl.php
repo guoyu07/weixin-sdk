@@ -139,4 +139,28 @@ class WxpubUrl
     {
         return "https://api.weixin.qq.com/sns/auth?access_token={$access_token}&openid={$openid}";
     }
+
+    /**
+     * 开发者可通过OpenID来获取用户基本信息
+     *
+     * @param $access_token
+     * @param $openid
+     * @return string
+     * @author helei
+     */
+    public static function getSignUserInfoUrl($access_token, $openid)
+    {
+        return "https://api.weixin.qq.com/cgi-bin/user/info?access_token={$access_token}&openid={$openid}&lang=zh_CN";
+    }
+
+    /**
+     * 开发者可通过该接口来批量获取用户基本信息。最多支持一次拉取100条。
+     * @param $access_token
+     * @return string
+     * @author helei
+     */
+    public static function getBatchUserInfoUrl($access_token)
+    {
+        return "https://api.weixin.qq.com/cgi-bin/user/info/batchget?access_token={$access_token}";
+    }
 }
