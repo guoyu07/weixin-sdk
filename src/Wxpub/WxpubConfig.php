@@ -19,17 +19,17 @@ class WxpubConfig
     /**
      * 微信公众号登陆账号
      */
-    const LOGIN_ACCOUNT = '182xxxxx@qq.com';
+    const LOGIN_ACCOUNT = 'xxxxx@qq.com';
 
     /**
      * 开发者ID
      */
-    const APP_ID = 'wx816xxxxx8c';
+    const APP_ID = 'wxxxxxxxx';
 
     /**
      * 应用密钥
      */
-    const APP_SECRET = '7fefbxxxxxxxxxxx';
+    const APP_SECRET = 'xxxxxxxx';
 
     /**
      * 用于微信接入的token
